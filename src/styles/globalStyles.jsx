@@ -1,7 +1,5 @@
-import React from "react";
-
-const globalStyles = () => {
-  return <div>globalStyles</div>;
+export const navStyle = {
+  backgroundColor: "gray",
+  display: "flex",
+  justifyContent: "center",
 };
-
-export default globalStyles;

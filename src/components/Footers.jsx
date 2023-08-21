@@ -1,16 +1,10 @@
-import { Link, Toolbar } from "@mui/material";
+import { Toolbar } from "@mui/material";
 import React from "react";
+import { navStyle } from "../styles/globalStyles";
 
 const Footers = () => {
   return (
-    <Toolbar
-      component="abbr"
-      sx={{
-        backgroundColor: "#A5D6A7",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <Toolbar sx={navStyle}>
       <h4>Developed by FS Team</h4>
 
       <span>
