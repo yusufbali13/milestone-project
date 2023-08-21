@@ -1,4 +1,5 @@
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -26,6 +27,10 @@ const Dashboard = () => {
       </CardContent>
 
       <Typography variant="body2" color="text.secondary"></Typography>
+      <Grid container justifyContent="center" spacing={2}>
+        {}
+      </Grid>
+      <Outlet />
     </Card>
   );
 };
