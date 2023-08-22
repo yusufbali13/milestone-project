@@ -1,5 +1,5 @@
 export const navStyle = {
-  backgroundColor: "gray",
+  backgroundColor: "black",
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
 };

@@ -1,9 +1,9 @@
-import { fetchFail, fetchStart } from "../features/authReducer";
+import { fetchFail, fetchStart } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
-const useStockCall = () => {
+const useAuthCall = () => {
   const dispatch = useDispatch();
   const { axiosWithToken } = useAxios();
 
@@ -66,4 +66,4 @@ const useStockCall = () => {
   };
 };
 
-export default useStockCall;
+export default useAuthCall;

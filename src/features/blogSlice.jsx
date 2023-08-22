@@ -6,12 +6,8 @@ const dashSlice = createSlice({
   initialState: {
     loading: false,
     error: false,
-    sales: [],
-    purchases: [],
-    firms: [],
-    categories: [],
-    brands: [],
-    products: [],
+    blogs: [],
+    details: [],
   },
   reducers: {
     fetchStart: (state) => {

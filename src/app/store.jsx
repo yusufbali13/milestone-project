@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import authReducer from "../features/authReducer";
-import blogReducer from "../features/blogReducer";
+import authReducer from "../features/authSlice";
+import blogReducer from "../features/blogSlice";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage/session"; //? default : localStorage

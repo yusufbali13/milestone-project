@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
 import logo from "../assets/cw.png";
-import { AppBar, Avatar, Button, Toolbar } from "@mui/material";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  CssBaseline,
+  Toolbar,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { navStyle } from "../styles/globalStyles";
 
@@ -9,23 +15,17 @@ const NavBars = () => {
 
   return (
     <AppBar position="static">
+      <CssBaseline />
       <Toolbar sx={navStyle}>
-        <Link to="/">
-          <img
-            src={logo}
-            alt="logo"
-            width="30px"
-            onClick={() => navigate("/dasboard")}
-          />
-        </Link>
-
-        <div>
+        <Box>
           <Button onClick={() => navigate("/")}>DASHBOARD</Button>
           <Button onClick={() => navigate("/login")}>NEW BLOG</Button>
           <Button onClick={() => navigate("/about")}>ABOUT</Button>
-        </div>
+        </Box>
 
-        <Avatar sx={{ width: 40, height: 40, ml: 150 }}></Avatar>
+        <img src={logo} alt="logo" width="30px" />
+
+        <Avatar sx={{ width: 40, height: 40 }}>Y</Avatar>
       </Toolbar>
     </AppBar>
   );

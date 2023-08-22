@@ -14,7 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   return (
-    <Container maxWidth="lg">
+    <Container>
       <Grid
         container
         justifyContent="center"
@@ -44,6 +44,7 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values, action) => {
+              login(values);
               action.resetForm();
               action.setSubmitting(false);
             }}
@@ -61,7 +62,7 @@ const Login = () => {
                     value={values.email}
                   />
                   <TextField
-                    label="password"
+                    label="Password *"
                     name="password"
                     id="password"
                     type="password"
@@ -83,8 +84,7 @@ const Login = () => {
 
           <Box sx={{ mt: 2 }}>
             <span>
-              Don't have an account?
-              <Link to="/register">Sign Up</Link>
+              Don't have an account? <Link to="/register">Sign Up</Link>
             </span>
           </Box>
         </Grid>

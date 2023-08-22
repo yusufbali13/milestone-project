@@ -1,5 +1,9 @@
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import image from "../assets/cw.png";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 const About = () => {
   return (
@@ -34,6 +38,12 @@ const About = () => {
           Full Stack Team
         </Typography>
       </CardContent>
+      <Typography sx={{ cursor: "pointer" }}>
+        <LinkedInIcon />
+        <TwitterIcon />
+        <InstagramIcon />
+        <YouTubeIcon />
+      </Typography>
     </Card>
   );
 };
