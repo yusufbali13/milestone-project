@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import authReducer from "../features/authReducer";
-import stockReducer from "../features/blogReducer";
+import blogReducer from "../features/blogReducer";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage/session"; //? default : localStorage
@@ -15,7 +15,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: persistedReducer,
-    blog: stockReducer,
+    blog: blogReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: getDefaultMiddleware({

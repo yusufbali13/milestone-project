@@ -1,9 +1,4 @@
-import {
-  fetchFail,
-  fetchStart,
-  getStockSuccess,
-  getProdCatBrandsSuccess,
-} from "../features/authReducer";
+import { fetchFail, fetchStart } from "../features/authReducer";
 import { useDispatch } from "react-redux";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
@@ -62,35 +57,12 @@ const useStockCall = () => {
     }
   };
   // ? Products, categories ve brands isteklerinin Promise.all ile es zamanli alinmasi.
-  const getProdCatBrands = async () => {
-    dispatch(fetchStart());
-    try {
-      const [products, categories, brands] = await Promise.all([
-        axiosWithToken("stock/products/"),
-        axiosWithToken("stock/categories/"),
-        axiosWithToken("stock/brands/"),
-      ]);
-
-      dispatch(
-        getProdCatBrandsSuccess([
-          products?.data,
-          categories?.data,
-          brands?.data,
-        ])
-      );
-    } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
-      toastErrorNotify(`Data can not be fetched`);
-    }
-  };
 
   return {
     getStockData,
     deleteStockData,
     postStockData,
     putStockData,
-    getProdCatBrands,
   };
 };
 
