@@ -8,8 +8,11 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -41,7 +44,6 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values, action) => {
-              login(values);
               action.resetForm();
               action.setSubmitting(false);
             }}
@@ -67,7 +69,11 @@ const Login = () => {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <Button variant="contained" type="submit">
+                  <Button
+                    onClick={() => navigate("/newblog")}
+                    variant="contained"
+                    type="submit"
+                  >
                     SIGN IN
                   </Button>
                 </Box>
