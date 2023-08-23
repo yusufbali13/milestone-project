@@ -7,11 +7,11 @@ const useAuthCall = () => {
   const dispatch = useDispatch();
   const { axiosWithToken } = useAxios();
 
-  const getStockData = async (url) => {
+  const getBlogData = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`/stock/${url}/`);
-      dispatch(getStockSuccess({ data, url }));
+      const { data } = await axiosWithToken(`/blog/${url}/`);
+      dispatch(getBlogData({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -59,7 +59,7 @@ const useAuthCall = () => {
   // ? Products, categories ve brands isteklerinin Promise.all ile es zamanli alinmasi.
 
   return {
-    getStockData,
+    getBlogData,
     deleteStockData,
     postStockData,
     putStockData,

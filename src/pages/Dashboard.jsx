@@ -1,40 +1,52 @@
-import { Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import { useSelector } from "react-redux";
 
-const Dashboard = () => {
+import useBlogCall from "../hook/useBlogCall";
+
+const Dasboard = () => {
+  const { blogs } = useSelector((state) => state.blog);
+
+  const { getBlog } = useBlogCall();
+
+  const { title } = useSelector((state) => state.blog);
+
+  const [info, setInfo] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    image: "",
+  });
+
+  useEffect(() => {
+    getBlog();
+  }, []);
+
   return (
-    <Card
-      sx={{
-        p: 2,
-        width: "300px",
-        height: "400px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <CardMedia
-        sx={{ p: 1, objectFit: "contain", height: "130px" }}
-        image=""
-        title="firm-image"
-        component="img"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div"></Typography>
-        <Typography variant="body2" color="text.secondary">
-          sdadasd sdasdad sdas
-        </Typography>
-      </CardContent>
+    <div>
+      <Typography variant="h4" color={"error"} mb={3}>
+        Firms
+      </Typography>
+      <Button variant="contained" sx={{ mb: 4 }}>
+        NEW FIRM
+      </Button>
 
-      <Typography variant="body2" color="text.secondary"></Typography>
-      {/* <Grid container justifyContent="center" spacing={2}>
-        {title?.map((item) => (
-          <Grid item>{item.title}</Grid>
+      <Grid container justifyContent={"center"} spacing={2}>
+        {blogs?.map((firm) => (
+          <Grid item key={firm.id}>
+            <FirmCard
+              firm={firm}
+              handleOpen={handleOpen}
+              info={info}
+              setInfo={setInfo}
+            />
+          </Grid>
         ))}
-      </Grid> */}
-      <Outlet />
-    </Card>
+      </Grid>
+    </div>
   );
 };
 
-export default Dashboard;
+export default Dasboard;

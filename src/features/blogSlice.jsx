@@ -9,41 +9,17 @@ const dashSlice = createSlice({
     blogs: [],
     details: [],
   },
+
   reducers: {
     fetchStart: (state) => {
       state.loading = true;
       state.error = false;
     },
-    getStockSuccess: (state, { payload }) => {
+
+    getBlogsSuccess: (state, { payload }) => {
       state.loading = false;
       state[payload.url] = payload.data;
     },
-
-    // ? Products, categories ve brands state'lerini güncelleyen action fonks.
-    getProdCatBrandsSuccess: (state, { payload }) => {
-      state.loading = false;
-      state.products = payload[0];
-      state.categories = payload[1];
-      state.brands = payload[2];
-    },
-
-    getCatagorySuccess: (state, { payload }) => {
-      state.loading = false;
-      state[payload.url] = payload.data;
-    },
-
-    // getFirmsSuccess: (state, { payload }) => {
-    //   state.loading = false
-    //   state.firms = payload
-    // },
-    // getBrandsSuccess: (state, { payload }) => {
-    //   state.loading = false
-    //   state.brands = payload
-    // },
-    // getSalesSuccess: (state, { payload }) => {
-    //   state.loading = false
-    //   state.sales = payload
-    // },
 
     fetchFail: (state) => {
       state.loading = false;
@@ -52,10 +28,5 @@ const dashSlice = createSlice({
   },
 });
 
-export const {
-  fetchStart,
-  fetchFail,
-  getStockSuccess,
-  getProdCatBrandsSuccess,
-} = dashSlice.actions;
+export const { fetchStart, fetchFail, getBlogsSuccess } = dashSlice.actions;
 export default dashSlice.reducer;
