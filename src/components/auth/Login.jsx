@@ -51,7 +51,15 @@ const Login = () => {
           >
             {({ handleChange, values }) => (
               <Form>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                    width: 400,
+                    margin: "auto",
+                  }}
+                >
                   <TextField
                     label="Email Address*"
                     name="email"
@@ -77,16 +85,15 @@ const Login = () => {
                   >
                     SIGN IN
                   </Button>
+                  <Box>
+                    <span>
+                      Don't have an account? <Link to="/register">Sign Up</Link>
+                    </span>
+                  </Box>
                 </Box>
               </Form>
             )}
           </Formik>
-
-          <Box sx={{ mt: 2 }}>
-            <span>
-              Don't have an account? <Link to="/register">Sign Up</Link>
-            </span>
-          </Box>
         </Grid>
       </Grid>
     </Container>

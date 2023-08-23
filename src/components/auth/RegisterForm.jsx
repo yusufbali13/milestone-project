@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Form } from "formik";
+import { Link } from "react-router-dom";
 
 const RegisterForm = ({
   values,
@@ -13,9 +14,17 @@ const RegisterForm = ({
   return (
     <div>
       <Form>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            width: 400,
+            margin: "auto",
+          }}
+        >
           <TextField
-            label="User Name"
+            label="Username *"
             name="username"
             id="userName"
             type="text"
@@ -27,9 +36,9 @@ const RegisterForm = ({
             helperText={errors.username}
           />
           <TextField
-            label="First Name"
-            name="first_name"
-            id="firstName"
+            label="Email Address *"
+            name="email"
+            id="email"
             type="text"
             variant="outlined"
             value={values.first_name}
@@ -39,10 +48,10 @@ const RegisterForm = ({
             helperText={errors.first_name}
           />
           <TextField
-            label="Last Name"
-            name="last_name"
-            id="last_name"
-            type="text"
+            label="Image"
+            name="image"
+            id="image"
+            type="url"
             variant="outlined"
             value={values.last_name}
             onChange={handleChange}
@@ -51,10 +60,10 @@ const RegisterForm = ({
             helperText={errors.last_name}
           />
           <TextField
-            label="Email"
-            name="email"
-            id="email"
-            type="email"
+            label="Bio"
+            name="bio"
+            id="bio"
+            type="text"
             variant="outlined"
             value={values.email}
             onChange={handleChange}
@@ -63,7 +72,7 @@ const RegisterForm = ({
             helperText={errors.email}
           />
           <TextField
-            label="password"
+            label="Password *"
             name="password"
             id="password"
             type="password"
@@ -77,6 +86,12 @@ const RegisterForm = ({
           <Button type="submit" variant="contained" size="large">
             Submit
           </Button>
+          <Box>
+            Already have an account?
+            <Link to="/login" color="blue">
+              Sign in
+            </Link>
+          </Box>
         </Box>
       </Form>
     </div>

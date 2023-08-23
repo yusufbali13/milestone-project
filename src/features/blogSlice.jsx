@@ -27,6 +27,11 @@ const dashSlice = createSlice({
       state.brands = payload[2];
     },
 
+    getCatagorySuccess: (state, { payload }) => {
+      state.loading = false;
+      state[payload.url] = payload.data;
+    },
+
     // getFirmsSuccess: (state, { payload }) => {
     //   state.loading = false
     //   state.firms = payload

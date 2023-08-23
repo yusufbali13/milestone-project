@@ -4,45 +4,35 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { icon, icons, shadowCard } from "../styles/globalStyles";
 
 const About = () => {
   return (
-    <Card
-      sx={{
-        p: 1,
-        width: "300px",
-        height: "400px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        boxShadow: "-moz-initial",
-      }}
-    >
+    <Card sx={shadowCard}>
       <CardMedia
-        sx={{ objectFit: "contain", height: "60px" }}
+        sx={{ objectFit: "contain", height: "70px" }}
         image={image}
         title="image"
         component="img"
       />
       <CardContent>
-        <Typography variant="h3" component="div">
+        <Typography variant="h3" component="div" fontWeight="bold">
           Clarusway
         </Typography>
         <Typography
           variant="h6"
-          color="text.secondary"
           display="flex"
           justifyContent="center"
+          fontWeight="bold"
         >
           Full Stack Team
         </Typography>
       </CardContent>
-      <Typography sx={{ cursor: "pointer" }}>
-        <LinkedInIcon />
-        <TwitterIcon />
-        <InstagramIcon />
-        <YouTubeIcon />
+      <Typography>
+        <LinkedInIcon sx={icon} />
+        <TwitterIcon sx={icon} />
+        <InstagramIcon sx={icons} />
+        <YouTubeIcon sx={icons} />
       </Typography>
     </Card>
   );

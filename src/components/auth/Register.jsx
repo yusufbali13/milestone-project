@@ -3,8 +3,6 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
 import RegisterForm from "./RegisterForm";
 import { Formik } from "formik";
 import useAuthCall from "../../hook/useAuthCall";
@@ -54,15 +52,6 @@ const Register = () => {
             }}
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
-
-          <Box sx={{ mt: 2 }}>
-            <span>
-              Already have an account?{" "}
-              <Link to="/login" color="blue">
-                Sign in
-              </Link>
-            </span>
-          </Box>
         </Grid>
       </Grid>
     </Container>
