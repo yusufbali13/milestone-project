@@ -17,10 +17,6 @@ const Register = () => {
         justifyContent="center"
         direction="row-reverse"
         rowSpacing={{ sm: 3 }}
-        sx={{
-          height: "100vh",
-          p: 2,
-        }}
       >
         <Grid item xs={12} sm={10} md={6}>
           <Avatar

@@ -7,7 +7,7 @@ export const navStyle = {
 export const shadowCard = {
   p: 1,
   width: "350px",
-  height: "500px",
+  height: "520px",
   flexDirection: "column",
   boxShadow: "-moz-initial",
   margin: "auto",
@@ -21,6 +21,7 @@ export const shadowCard = {
 export const icon = {
   cursor: "pointer",
   fontSize: 40,
+  color: "black",
 
   "&:hover": {
     color: "blue",
@@ -30,6 +31,7 @@ export const icon = {
 export const icons = {
   cursor: "pointer",
   fontSize: 40,
+  color: "black",
 
   "&:hover": {
     color: "red",

@@ -7,8 +7,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { Outlet } from "react-router-dom";
 import { navStyle } from "../styles/globalStyles";
-import { Avatar, Button } from "@mui/material";
+import { Avatar, Button, CardMedia } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import img from "../assets/cw.png";
 
 function NavBars() {
   const navigate = useNavigate();
@@ -32,10 +33,11 @@ function NavBars() {
             <Button onClick={() => navigate("/about")}>ABOUT</Button>
           </Box>
 
-          <Avatar sx={{ width: 40, height: 40 }}>Y</Avatar>
+          <img src={img} title="img" />
+
+          <Avatar sx={{ width: 40, height: 40 }}></Avatar>
         </Toolbar>
       </AppBar>
-      <Box component="nav" aria-label="mailbox folders"></Box>
       <Box
         component="main"
         sx={{
@@ -51,38 +53,3 @@ function NavBars() {
 }
 
 export default NavBars;
-
-// import logo from "../assets/cw.png";
-// import {
-//   AppBar,
-//   Avatar,
-//   Box,
-//   Button,
-//   CssBaseline,
-//   Toolbar,
-// } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
-// import { navStyle } from "../styles/globalStyles";
-
-// const NavBars = () => {
-//   const navigate = useNavigate();
-
-//   return (
-//     <AppBar position="static">
-//       <CssBaseline />
-//       <Toolbar sx={navStyle}>
-//         <Box>
-//           <Button onClick={() => navigate("/")}>DASHBOARD</Button>
-//           <Button onClick={() => navigate("/login")}>NEW BLOG</Button>
-//           <Button onClick={() => navigate("/about")}>ABOUT</Button>
-//         </Box>
-
-//         <img src={logo} alt="logo" width="30px" />
-
-//         <Avatar sx={{ width: 40, height: 40 }}>Y</Avatar>
-//       </Toolbar>
-//     </AppBar>
-//   );
-// };
-
-// export default NavBars;

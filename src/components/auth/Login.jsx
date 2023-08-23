@@ -15,15 +15,7 @@ const Login = () => {
 
   return (
     <Container>
-      <Grid
-        container
-        justifyContent="center"
-        direction="row-reverse"
-        sx={{
-          height: "100vh",
-          p: 2,
-        }}
-      >
+      <Grid container justifyContent="center" direction="row-reverse">
         <Grid item xs={12} sm={10} md={6} mt={6}>
           <Avatar
             sx={{
