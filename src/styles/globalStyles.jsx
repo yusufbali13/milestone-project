@@ -1,10 +1,3 @@
-export const navStyle = {
-  backgroundColor: "black",
-  color: "white",
-  display: "flex",
-  justifyContent: "space-between",
-};
-
 export const shadowCard = {
   p: 1,
   width: "350px",
@@ -30,8 +23,8 @@ export const homeCard = {
 };
 
 export const cardBtn = {
-  backgroundColor: "black",
   color: "white",
+  backgroundColor: "black",
 };
 
 export const icon = {

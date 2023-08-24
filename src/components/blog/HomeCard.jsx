@@ -65,22 +65,21 @@ const HomeCard = ({ blog }) => {
             {author}
           </Typography>
         </Box>
-        <Box>
-          <Box>
-            <Button
-              sx={cardBtn}
-              onClick={() => {
-                getBlogDetailsData("blogs", id);
-                {
-                  author === data.username
-                    ? navigate("/myblogdetail")
-                    : navigate(`/${id}`);
-                }
-              }}
-            >
-              READ MORE
-            </Button>
-          </Box>
+
+        <Box sx={cardBtn}>
+          <Button
+            sx={cardBtn}
+            onClick={() => {
+              getBlogDetailsData("blogs", id);
+              {
+                author === data.username
+                  ? navigate("/blogdetail")
+                  : navigate(`/${id}`);
+              }
+            }}
+          >
+            READ MORE
+          </Button>
         </Box>
       </Card>
     </div>

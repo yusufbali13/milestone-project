@@ -7,6 +7,7 @@ import About from "../pages/About";
 import { BrowserRouter as Router } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Register from "../components/auth/Register";
+import BlogDetail from "../pages/BlogDetail";
 
 const AppRouter = () => {
   return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/new-blog" element={<NewBlog />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blogdetail" element={<BlogDetail />} />
         </Routes>
       </Router>
     </>

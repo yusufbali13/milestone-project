@@ -129,7 +129,7 @@ function NavBars() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem>Login</MenuItem>
+              <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
             </Menu>
           </Box>
         </Toolbar>
