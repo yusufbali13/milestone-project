@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const dashSlice = createSlice({
+const stockSlice = createSlice({
   name: "blog",
 
   initialState: {
@@ -28,5 +28,5 @@ const dashSlice = createSlice({
   },
 });
 
-export const { fetchStart, fetchFail, getBlogSuccess } = dashSlice.actions;
-export default dashSlice.reducer;
+export const { fetchStart, fetchFail, getBlogSuccess } = stockSlice.actions;
+export default stockSlice.reducer;

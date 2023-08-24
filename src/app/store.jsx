@@ -5,7 +5,7 @@ import blogReducer from "../features/blogSlice";
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    blog: blogReducer,
+    blogs: blogReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
 });

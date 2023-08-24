@@ -3,26 +3,24 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import useBlogCall from "../hook/useBlogCall";
+import { useSelector } from "react-redux";
+import HomeCard from "../components/blog/HomeCard";
 
 const Dasboard = () => {
   const { getBlogData } = useBlogCall();
+  const { blogs } = useSelector((state) => state.blogs);
 
   useEffect(() => {
-    getBlogData("blog");
+    getBlogData("blogs");
   }, []);
 
   return (
     <div>
-      <Typography variant="h4" color="error" mb={3}>
-        Firms
-      </Typography>
-      <Button variant="contained" sx={{ mb: 4 }}>
-        NEW FIRM
-      </Button>
-
-      <Grid container justifyContent="center" spacing={2}>
-        {blog?.map((firm) => (
-          <Grid item key={firm.id}></Grid>
+      <Grid container justifyContent="center" spacing={5}>
+        {blogs?.map((blog) => (
+          <Grid item key={blog.id}>
+            <HomeCard blog={blog} />
+          </Grid>
         ))}
       </Grid>
     </div>

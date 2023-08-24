@@ -6,12 +6,12 @@ import useAxios from "./useAxios";
 
 const useBlogCall = () => {
   const dispatch = useDispatch();
-  const { axiosWithToken } = useAxios();
+  const { axiosPublic } = useAxios();
 
   const getBlogData = async (url) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`/blog/${url}/`);
+      const { data } = await axiosPublic(`/api/${url}/`);
       dispatch(getBlogSuccess({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
