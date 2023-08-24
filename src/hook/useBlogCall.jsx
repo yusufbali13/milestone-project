@@ -1,17 +1,18 @@
-import { useDispatch } from "react-redux";
+import { getBlogSuccess, fetchFail, fetchStart } from "../features/blogSlice";
 
-import { useSelector } from "react-redux";
-import { fetchFail, fetchStart } from "../features/authSlice";
+import { useDispatch } from "react-redux";
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
+import useAxios from "./useAxios";
 
 const useBlogCall = () => {
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
+  const { axiosWithToken } = useAxios();
 
-  const getBlog = async (url) => {
+  const getBlogData = async (url) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithToken(`/blog/${url}/`);
-      dispatch(getStockSuccess({ data, url }));
+      dispatch(getBlogSuccess({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -19,7 +20,7 @@ const useBlogCall = () => {
   };
 
   return {
-    getBlog,
+    getBlogData,
   };
 };
 

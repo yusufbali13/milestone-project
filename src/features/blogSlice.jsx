@@ -16,7 +16,7 @@ const dashSlice = createSlice({
       state.error = false;
     },
 
-    getBlogsSuccess: (state, { payload }) => {
+    getBlogSuccess: (state, { payload }) => {
       state.loading = false;
       state[payload.url] = payload.data;
     },
@@ -28,5 +28,5 @@ const dashSlice = createSlice({
   },
 });
 
-export const { fetchStart, fetchFail, getBlogsSuccess } = dashSlice.actions;
+export const { fetchStart, fetchFail, getBlogSuccess } = dashSlice.actions;
 export default dashSlice.reducer;

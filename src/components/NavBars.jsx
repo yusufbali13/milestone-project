@@ -7,7 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import { Outlet } from "react-router-dom";
 import { navStyle } from "../styles/globalStyles";
-import { Avatar, Button, CardMedia } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import img from "../assets/cw.png";
 
