@@ -38,7 +38,7 @@ const About = () => {
           to="https://twitter.com/clarusway?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
           target="_blank"
         >
-          <TwitterIcon sx={icon} />
+          <TwitterIcon fontSize="large" sx={icon} />
         </Link>
 
         <Link to="https://www.instagram.com/clarusway/?hl=en" target="_blank">

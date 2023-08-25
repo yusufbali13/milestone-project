@@ -1,15 +1,15 @@
 import { Box, Button, Card, CardMedia, Grid, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
-import useBlogCall from "../../hook/useBlogCall";
+import useBlog from "../hook/useBlogs";
 import { useSelector } from "react-redux";
-import { cardBtn, homeCard } from "../../styles/globalStyles";
+import { cardBtn, homeCard } from "../styles/globalStyles";
 const HomeCard = ({ blog }) => {
   const { id, image, title, publish_date, content, author } = blog;
   const tarih = new Date(publish_date);
   const navigate = useNavigate();
-  const { getBlogDetailsData } = useBlogCall();
-  const { data } = useSelector((state) => state.auth);
+  const { getBlogDetailsData } = useBlog();
+  const { data } = useSelector((state) => state.blog);
   return (
     <div>
       <Card sx={homeCard}>

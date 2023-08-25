@@ -9,12 +9,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
-import useAuthCall from "../../hook/useAuthCall";
+import useAuth from "../hook/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const { login } = useAuthCall();
+  const { login } = useAuth();
 
   return (
     <Container>

@@ -4,8 +4,8 @@ import store from "./app/store";
 import { ToastContainer } from "react-toastify";
 import AuthContextProvider from "./context/authContext";
 import { BrowserRouter } from "react-router-dom";
-import NavBars from "../components/NavBars";
 import Footer from "./components/Footer";
+import NavBars from "./components/NavBars";
 
 function App() {
   return (

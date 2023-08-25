@@ -5,10 +5,10 @@ import LockIcon from "@mui/icons-material/Lock";
 import Grid from "@mui/material/Grid";
 import RegisterForm from "./RegisterForm";
 import { Formik } from "formik";
-import useAuthCall from "../../hook/useAuthCall";
+import useAuth from "../hook/useAuth";
 
 const Register = () => {
-  const { register } = useAuthCall();
+  const { register } = useAuth();
 
   return (
     <Container>

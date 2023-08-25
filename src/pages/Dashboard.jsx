@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import useBlogCall from "../hook/useBlogCall";
+import useBlog from "../hook/useBlogs";
 import { useSelector } from "react-redux";
-import HomeCard from "../components/blog/HomeCard";
+import HomeCard from "../components/HomeCard";
 
 const Dasboard = () => {
-  const { getBlogData } = useBlogCall();
-  const { blogs } = useSelector((state) => state.blogs);
+  const { getBlogData } = useBlog();
+  const { blogs } = useSelector((state) => state.blog);
 
   useEffect(() => {
     getBlogData("blogs");
