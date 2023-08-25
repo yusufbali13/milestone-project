@@ -21,7 +21,7 @@ const Register = () => {
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
-              backgroundColor: "#1565C0",
+              backgroundColor: "black",
               m: "auto",
               width: 40,
               height: 40,

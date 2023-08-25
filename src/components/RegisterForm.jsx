@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { Form } from "formik";
 import { Link } from "react-router-dom";
+import { cardBtn } from "../styles/globalStyles";
 
 const RegisterForm = ({
   values,
@@ -83,8 +84,8 @@ const RegisterForm = ({
             error={touched.password && Boolean(errors.password)}
             helperText={errors.password}
           />
-          <Button type="submit" variant="contained" size="large">
-            Submit
+          <Button type="submit" variant="contained" sx={cardBtn}>
+            Sign up
           </Button>
           <Box>
             Already have an account?

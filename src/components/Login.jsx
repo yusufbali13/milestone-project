@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
+import { cardBtn } from "../styles/globalStyles";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Login = () => {
         <Grid item xs={12} sm={10} md={6} mt={6}>
           <Avatar
             sx={{
-              backgroundColor: "#1565C0",
+              backgroundColor: "black",
               m: "auto",
               width: 35,
               height: 35,
@@ -77,6 +78,7 @@ const Login = () => {
                     onClick={() => navigate("/newblog")}
                     variant="contained"
                     type="submit"
+                    sx={cardBtn}
                   >
                     SIGN IN
                   </Button>

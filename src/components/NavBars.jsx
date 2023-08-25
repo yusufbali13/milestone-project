@@ -36,7 +36,10 @@ function NavBars() {
   };
 
   return (
-    <AppBar position="static" sx={{ marginBottom: 4 }}>
+    <AppBar
+      position="static"
+      sx={{ marginBottom: 4, backgroundColor: "black" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

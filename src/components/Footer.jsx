@@ -5,15 +5,16 @@ const Footer = () => {
   return (
     <Grid
       sx={{
-        backgroundColor: "#1976D2",
+        backgroundColor: "black",
         color: "white",
         py: 1,
         textAlign: "center",
         height: "4.5rem",
+        marginTop: 4,
       }}
     >
-      <Typography>Developed by Ahmet Can AYDIN</Typography>
-      <Typography> Copyright © 2023</Typography>
+      <Typography>Developed by Yusuf Balı</Typography>
+      <Typography> Copyright © {new Date().getFullYear()}</Typography>
     </Grid>
   );
 };

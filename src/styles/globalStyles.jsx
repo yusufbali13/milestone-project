@@ -24,6 +24,9 @@ export const homeCard = {
 export const cardBtn = {
   color: "white",
   backgroundColor: "black",
+  "&:hover": {
+    backgroundColor: "black",
+  },
 };
 
 export const icon = {
