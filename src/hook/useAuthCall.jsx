@@ -1,69 +1,68 @@
-import { fetchFail, fetchStart } from "../features/authSlice";
-import { useDispatch } from "react-redux";
+import axios from "axios";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
-import useAxios from "./useAxios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  fetchFail,
+  fetchStart,
+  loginSuccess,
+  logoutSuccess,
+  registerSuccess,
+} from "../features/authSlice";
 
 const useAuthCall = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { axiosWithToken } = useAxios();
 
-  const getBlogData = async (url) => {
+  const login = async (userData) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`/blog/${url}/`);
-      dispatch(getBlogData({ data, url }));
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/users/auth/login/`,
+        userData
+      );
+      dispatch(loginSuccess(data));
+      toastSuccessNotify("login islemi basarili");
+      navigate("/new-blog");
     } catch (error) {
+      console.log(error.message);
       dispatch(fetchFail());
-      console.log(error);
+      toastErrorNotify("Login islemi basarisiz");
     }
   };
 
-  const deleteStockData = async (url, id) => {
+  const logout = async () => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.delete(`/stock/${url}/${id}/`);
-      toastSuccessNotify(`${url} succesfuly deleted`);
-      getStockData(url);
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/account/auth/logout/`);
+      dispatch(logoutSuccess());
+      toastSuccessNotify("logout islemi basarili");
+      navigate("/");
     } catch (error) {
-      dispatch(fetchFail());
-      toastErrorNotify(`${url} can not be deleted`);
       console.log(error);
+      dispatch(fetchFail());
+      toastErrorNotify("Logout islemi basarisiz");
     }
   };
 
-  const postStockData = async (url, info) => {
+  const register = async (userData) => {
     dispatch(fetchStart());
     try {
-      await axiosWithToken.post(`/stock/${url}/`, info);
-      toastSuccessNotify(`${url} succesfuly posted`);
-      getStockData(url);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/account/register/`,
+        userData
+      );
+      dispatch(registerSuccess(data));
+      toastSuccessNotify("kayit islemi basarili");
+      navigate("/stock");
     } catch (error) {
-      dispatch(fetchFail());
-      toastErrorNotify(`${url} can not be posted`);
       console.log(error);
+      dispatch(fetchFail());
+      toastErrorNotify("Kayit islemi basarisiz olmustur.");
     }
   };
 
-  const putStockData = async (url, info) => {
-    dispatch(fetchStart());
-    try {
-      await axiosWithToken.put(`/stock/${url}/${info.id}/`, info);
-      toastSuccessNotify(`${url} succesfuly updated`);
-      getStockData(url);
-    } catch (error) {
-      dispatch(fetchFail());
-      toastErrorNotify(`${url} can not be updated`);
-      console.log(error);
-    }
-  };
-  // ? Products, categories ve brands isteklerinin Promise.all ile es zamanli alinmasi.
-
-  return {
-    getBlogData,
-    deleteStockData,
-    postStockData,
-    putStockData,
-  };
+  return { login, logout, register };
 };
 
 export default useAuthCall;

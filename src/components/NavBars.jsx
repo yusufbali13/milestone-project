@@ -10,8 +10,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { CssBaseline } from "@mui/material";
+import { CardMedia, CssBaseline } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/cw.png";
 
 function NavBars() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -50,6 +51,7 @@ function NavBars() {
             >
               <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -73,6 +75,17 @@ function NavBars() {
               <MenuItem onClick={() => navigate("/about")}>About</MenuItem>
             </Menu>
           </Box>
+
+          <CardMedia
+            component="img"
+            height="65"
+            image={logo}
+            alt="image"
+            sx={{
+              objectFit: "contain",
+              width: "100px",
+            }}
+          />
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button

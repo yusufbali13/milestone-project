@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import useBlogCall from "../hook/useBlogCall";
 import { useSelector } from "react-redux";

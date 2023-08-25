@@ -9,9 +9,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
 import { useNavigate } from "react-router-dom";
+import useAuthCall from "../../hook/useAuthCall";
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const { login } = useAuthCall();
 
   return (
     <Container>
@@ -48,8 +51,8 @@ const Login = () => {
                     display: "flex",
                     flexDirection: "column",
                     gap: 2,
-                    width: 400,
                     margin: "auto",
+                    width: 400,
                   }}
                 >
                   <TextField

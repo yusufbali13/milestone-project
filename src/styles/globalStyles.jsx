@@ -1,5 +1,4 @@
 export const shadowCard = {
-  p: 1,
   width: "350px",
   height: "520px",
   flexDirection: "column",
