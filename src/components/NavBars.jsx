@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { CardMedia, CssBaseline } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/cw.png";
+import logo from "../assets/Y-blok.jpg";
 
 function NavBars() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -81,7 +81,7 @@ function NavBars() {
 
           <CardMedia
             component="img"
-            height="65"
+            height="60"
             image={logo}
             alt="image"
             sx={{

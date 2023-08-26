@@ -1,5 +1,5 @@
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
-import image from "../assets/cw.png";
+import image from "../assets/avatar.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -11,14 +11,19 @@ const About = () => {
   return (
     <Card sx={shadowCard}>
       <CardMedia
-        sx={{ objectFit: "contain", height: "80px" }}
+        sx={{ objectFit: "contain", height: "180px" }}
         image={image}
         title="image"
         component="img"
       />
       <CardContent>
-        <Typography variant="h3" component="div" fontWeight="bold">
-          Clarusway
+        <Typography
+          variant="h3"
+          component="div"
+          fontWeight="bold"
+          textAlign="center"
+        >
+          Yusuf
         </Typography>
         <Typography
           variant="h6"
@@ -26,7 +31,7 @@ const About = () => {
           justifyContent="center"
           fontWeight="bold"
         >
-          Full Stack Team
+          Front-End Team
         </Typography>
       </CardContent>
       <Typography>
