@@ -1,24 +1,24 @@
 import AppRouter from "./router/AppRouter";
 import { Provider } from "react-redux";
-import store from "./app/store";
+import store, { persistor } from "./app/store";
 import { ToastContainer } from "react-toastify";
-import AuthContextProvider from "./context/authContext";
 import { BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBars from "./components/NavBars";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
-    <AuthContextProvider>
-      <Provider store={store}>
-        <ToastContainer />
-        <BrowserRouter>
+    <Provider store={store}>
+      <ToastContainer />
+      <BrowserRouter>
+        <PersistGate loading={null} persistor={persistor}>
           <NavBars />
           <AppRouter />
           <Footer />
-        </BrowserRouter>
-      </Provider>
-    </AuthContextProvider>
+        </PersistGate>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

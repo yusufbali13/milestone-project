@@ -15,7 +15,7 @@ import { cardBtn } from "../styles/globalStyles";
 const Login = () => {
   const navigate = useNavigate();
 
-  const { login } = useAuth();
+  const { loginpost } = useAuth();
 
   return (
     <Container>
@@ -40,7 +40,7 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values, action) => {
-              login(values);
+              loginpost(values);
               action.resetForm();
               action.setSubmitting(false);
             }}
@@ -75,7 +75,7 @@ const Login = () => {
                     value={values.password}
                   />
                   <Button
-                    onClick={() => navigate("/newblog")}
+                    onClick={() => navigate("/")}
                     variant="contained"
                     type="submit"
                     sx={cardBtn}

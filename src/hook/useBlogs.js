@@ -1,22 +1,42 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { fetchStart, getSuccess, fetchFail } from "../features/blogSlice";
-import { useAuthContext } from "../context/authContext";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchStart,
+  getSuccess,
+  fetchFail,
+  getDetailSuccess,
+} from "../features/blogSlice";
 import { toastifySuccess, toastifyError } from "../helper/Toastify";
 
 const useBlogs = () => {
-  const baseURL = "https://33468.fullstack.clarusway.com";
   const dispatch = useDispatch();
-  const { userData } = useAuthContext();
+
+  const { token } = useSelector((state) => state.auth);
+
   const config = {
-    headers: { Authorization: `Token ${userData.key}` },
+    headers: { Authorization: `Token ${token}` },
   };
 
   const getBlogData = async (dataName) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios(`${baseURL}/api/${dataName}/`);
+      const { data } = await axios(
+        `${import.meta.env.VITE_BASE_URL}/api/${dataName}/`
+      );
       dispatch(getSuccess({ dataName, data }));
+    } catch (error) {
+      dispatch(fetchFail());
+      toastifyError(error.message);
+    }
+  };
+
+  const getBlogDetailsData = async (url, id) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axios(
+        `${import.meta.env.VITE_BASE_URL}/url/${url}/${id}`
+      );
+      dispatch(getDetailSuccess(data));
     } catch (error) {
       dispatch(fetchFail());
       toastifyError(error.message);
@@ -27,7 +47,7 @@ const useBlogs = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios(
-        `${baseURL}/api/blogs/?author=${id}`,
+        `${import.meta.env.VITE_BASE_URL}/api/blogs/?author=${id}`,
         config
       );
       dispatch(getSuccess({ dataName, data }));
@@ -40,7 +60,10 @@ const useBlogs = () => {
   const getCurrentData = async (dataName, blogName, id) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios(`${baseURL}/api/${blogName}/${id}/`, config);
+      const { data } = await axios(
+        `${import.meta.env.VITE_BASE_URL}/api/${blogName}/${id}/`,
+        config
+      );
       dispatch(getSuccess({ dataName, data }));
     } catch (error) {
       dispatch(fetchFail());
@@ -51,7 +74,11 @@ const useBlogs = () => {
   const postBlogData = async (dataName, formValues) => {
     dispatch(fetchStart());
     try {
-      await axios.post(`${baseURL}/api/${dataName}/`, formValues, config);
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/${dataName}/`,
+        formValues,
+        config
+      );
       toastifySuccess("New blog has been successfully created.");
     } catch (error) {
       dispatch(fetchFail());
@@ -93,24 +120,6 @@ const useBlogs = () => {
     }
   };
 
-  const getFavs = async (id) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axios(`${baseURL}/api/likes/${id}/`);
-    } catch (error) {
-      toastifyError(error.message);
-    }
-  };
-
-  const getComments = async (dataName, id) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axios(`${baseURL}/api/comments/${id}/`);
-      dispatch(getSuccess({ dataName, data }));
-    } catch (error) {
-      toastifyError(error.message);
-    }
-  };
   const postComments = async (comment, id) => {
     dispatch(fetchStart());
     try {
@@ -128,13 +137,13 @@ const useBlogs = () => {
     getBlogData,
     postBlogData,
     postFavs,
-    getFavs,
-    getComments,
+
     postComments,
     getCurrentData,
     delBlog,
     updateBlog,
     getUserBlogs,
+    getBlogDetailsData,
   };
 };
 export default useBlogs;

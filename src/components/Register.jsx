@@ -36,9 +36,9 @@ const Register = () => {
           <Formik
             initialValues={{
               username: "",
-              first_name: "",
-              last_name: "",
               email: "",
+              image: "",
+              bio: "",
               password: "",
             }}
             onSubmit={(values, actions) => {

@@ -40,13 +40,13 @@ const RegisterForm = ({
             label="Email Address *"
             name="email"
             id="email"
-            type="text"
+            type="email"
             variant="outlined"
-            value={values.first_name}
+            value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.first_name && Boolean(errors.first_name)}
-            helperText={errors.first_name}
+            error={touched.email && Boolean(errors.email)}
+            helperText={errors.email}
           />
           <TextField
             label="Image"
@@ -54,11 +54,11 @@ const RegisterForm = ({
             id="image"
             type="url"
             variant="outlined"
-            value={values.last_name}
+            value={values.image}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.last_name && Boolean(errors.last_name)}
-            helperText={errors.last_name}
+            error={touched.image && Boolean(errors.image)}
+            helperText={errors.image}
           />
           <TextField
             label="Bio"
@@ -66,11 +66,11 @@ const RegisterForm = ({
             id="bio"
             type="text"
             variant="outlined"
-            value={values.email}
+            value={values.bio}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.email && Boolean(errors.email)}
-            helperText={errors.email}
+            error={touched.bio && Boolean(errors.bio)}
+            helperText={errors.bio}
           />
           <TextField
             label="Password *"

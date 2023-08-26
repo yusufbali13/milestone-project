@@ -13,10 +13,20 @@ import MenuItem from "@mui/material/MenuItem";
 import { CardMedia, CssBaseline } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/Y-blok.jpg";
+import avatar from "../assets/avatar.jpg";
+import { useSelector } from "react-redux";
+import { linkStyle } from "../styles/globalStyles";
+import useAuth from "../hook/useAuth";
 
 function NavBars() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const { currentUser, data } = useSelector((state) => state.auth);
+
+  console.log(currentUser);
+
+  const { logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -123,10 +133,7 @@ function NavBars() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="GS"
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Galatasaray_Star_Logo.png/313px-Galatasaray_Star_Logo.png"
-                />
+                <Avatar alt="img" src={avatar} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -145,7 +152,24 @@ function NavBars() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
+              {currentUser ? (
+                <MenuItem
+                  sx={{ display: "flex", flexDirection: "column" }}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Button onClick={() => navigate("/my-blog")} sx={linkStyle}>
+                    My Blogs
+                  </Button>
+                  <Button onClick={() => navigate("/profile")} sx={linkStyle}>
+                    Profile
+                  </Button>
+                  <Button sx={linkStyle} onClick={() => logout()}>
+                    Logout
+                  </Button>
+                </MenuItem>
+              ) : (
+                <Button onClick={() => navigate("login")}>Login</Button>
+              )}
             </Menu>
           </Box>
         </Toolbar>
