@@ -1,0 +1,57 @@
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import CommentIcon from "@mui/icons-material/Comment";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import useBlogCall from "../hook/useBlogs";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -4,
+    top: -1,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: "0 4px",
+  },
+}));
+export default function BlogBadgeFav({ likes, id, likes_n }) {
+  const { postFavs } = useBlogCall();
+  const { currentUser, data } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const like = likes_n.some((item) => item.user_id === data.id);
+  return (
+    <IconButton
+      onClick={() => {
+        currentUser ? postFavs(id) : navigate("/login");
+      }}
+      aria-label="cart"
+    >
+      <StyledBadge badgeContent={likes} color="secondary">
+        <FavoriteIcon sx={like ? { color: "red" } : { color: "" }} />
+      </StyledBadge>
+    </IconButton>
+  );
+}
+export function BlogBadgeComment({ comment_count, open, setOpen }) {
+  return (
+    <IconButton
+      onClick={() => setOpen(!open)}
+      sx={{ ml: "10px" }}
+      aria-label="cart"
+    >
+      <StyledBadge badgeContent={comment_count} color="secondary">
+        <CommentIcon />
+      </StyledBadge>
+    </IconButton>
+  );
+}
+export function BlogBadgeVisit({ post_views }) {
+  return (
+    <IconButton sx={{ ml: "10px" }} aria-label="cart">
+      <StyledBadge badgeContent={post_views} color="secondary">
+        <VisibilityIcon />
+      </StyledBadge>
+    </IconButton>
+  );
+}

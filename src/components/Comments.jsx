@@ -6,83 +6,42 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
-import { Box, Button, TextField } from "@mui/material";
-import useBlogs from "../hooks/useBlogs";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-
-export default function Comments({ id }) {
-  const { postComments, getComments } = useBlogs();
-  const [newComment, setNewComment] = useState({ content: "", post: "1" });
-  const handleChange = (e) => {
-    setNewComment({ ...newComment, content: e.target.value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    postComments(newComment, id);
-    setNewComment({ content: "", post: "1" });
-  };
-  useEffect(() => {
-    getComments("comments", id);
-  }, []);
-  const { comments } = useSelector((state) => state.blog);
+import CommentForm from "./CommentForm";
+const Comments = ({ details }) => {
   return (
-    <>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        <Typography
-          variant="h5"
-          pl={9}
-          color="text.primary"
-          sx={{ textShadow: "0px 0px 3px #ff8585" }}
-        >
-          Comments...
-        </Typography>
-        {comments?.map((item) => (
-          <div key={item?.id}>
+    <List sx={{ width: "100%", bgcolor: "background.paper", mt: 2 }}>
+      {details.comments.map((comment, index) => {
+        const { content, time_stamp, user, image, id } = comment;
+        const time = new Date(time_stamp);
+        return (
+          <div key={index}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar
-                  alt={item?.user}
-                  src="..."
-                  sx={{ bgcolor: "crimson" }}
-                />
+                <Avatar alt="Remy Sharp" src={details.image} />
               </ListItemAvatar>
               <ListItemText
-                primary={item?.user}
+                primary={user}
                 secondary={
                   <React.Fragment>
-                    <Typography color="text.primary" fontSize={14}>
-                      {new Date(item?.time_stamp).toLocaleString("en-US", {
-                        timeZone: "America/New_York",
-                      })}
+                    <Typography
+                      sx={{ display: "block" }}
+                      component="span"
+                      variant="body2"
+                      color="text.primary"
+                    >
+                      {time.toDateString()}
                     </Typography>
-                    <Typography color="text.secondary">
-                      {item?.content}
-                    </Typography>
+                    {content}
                   </React.Fragment>
                 }
               />
             </ListItem>
             <Divider variant="inset" component="li" />
           </div>
-        ))}
-      </List>
-      <Box component="form" onSubmit={handleSubmit} px={5}>
-        <TextField
-          id="content"
-          label="Multiline"
-          required
-          fullWidth
-          multiline
-          rows={3}
-          onChange={handleChange}
-          value={newComment.content}
-        />
-        <Button type="submit" fullWidth variant="contained" sx={{ my: 3 }}>
-          Add Comment
-        </Button>
-      </Box>
-    </>
+        );
+      })}
+      <CommentForm detailsId={details.id} />
+    </List>
   );
-}
+};
+export default Comments;

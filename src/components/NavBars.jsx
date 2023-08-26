@@ -52,7 +52,7 @@ function NavBars() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <CssBaseline />
             <IconButton
               size="large"
@@ -88,7 +88,6 @@ function NavBars() {
               <MenuItem onClick={() => navigate("/about")}>About</MenuItem>
             </Menu>
           </Box>
-
           <CardMedia
             component="img"
             height="60"
@@ -97,10 +96,11 @@ function NavBars() {
             sx={{
               objectFit: "contain",
               width: "100px",
+              flexGrow: { xs: 1, md: 0 },
             }}
           />
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 3, display: { xs: "none", md: "flex" } }}>
             <Button
               onClick={() => {
                 navigate("/");

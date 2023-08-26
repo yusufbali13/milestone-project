@@ -4,8 +4,22 @@ import { useNavigate } from "react-router-dom";
 import { cardBtn, homeCard } from "../styles/globalStyles";
 import useBlogs from "../hook/useBlogs";
 import { useSelector } from "react-redux";
+import BlogBadgeFav, { BlogBadgeComment, BlogBadgeVisit } from "./BlogBage";
+
 const HomeCard = ({ blog }) => {
-  const { id, image, title, publish_date, content, author } = blog;
+  const {
+    id,
+    image,
+    title,
+    publish_date,
+    content,
+    author,
+    likes_n,
+    likes,
+    comment_count,
+    post_views,
+  } = blog;
+
   const tarih = new Date(publish_date);
   const navigate = useNavigate();
   const { getBlogDetailsData } = useBlogs();
@@ -66,6 +80,12 @@ const HomeCard = ({ blog }) => {
             <AccountCircleIcon />
             {author}
           </Typography>
+        </Box>
+
+        <Box>
+          <BlogBadgeFav likes_n={likes_n} id={id} likes={likes} />
+          <BlogBadgeComment comment_count={comment_count} />
+          <BlogBadgeVisit post_views={post_views} />
         </Box>
 
         <Box sx={cardBtn}>

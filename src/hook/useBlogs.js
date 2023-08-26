@@ -7,11 +7,16 @@ import {
   getDetailSuccess,
 } from "../features/blogSlice";
 import { toastifySuccess, toastifyError } from "../helper/Toastify";
+import { useNavigate } from "react-router-dom";
 
 const useBlogs = () => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const { token } = useSelector((state) => state.auth);
+
+  console.log(token);
 
   const config = {
     headers: { Authorization: `Token ${token}` },
@@ -34,9 +39,11 @@ const useBlogs = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios(
-        `${import.meta.env.VITE_BASE_URL}/url/${url}/${id}`
+        `${import.meta.env.VITE_BASE_URL}/api/${url}/${id}/`,
+        config
       );
       dispatch(getDetailSuccess(data));
+      navigate(`/detail/${id}`);
     } catch (error) {
       dispatch(fetchFail());
       toastifyError(error.message);
@@ -85,6 +92,7 @@ const useBlogs = () => {
       toastifyError(error.message);
     }
   };
+
   const delBlog = async (id) => {
     dispatch(fetchStart());
     try {
@@ -111,9 +119,12 @@ const useBlogs = () => {
   const postFavs = async (id) => {
     dispatch(fetchStart());
     try {
-      await axios.post(`${baseURL}/api/likes/${id}/`, {}, config);
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/likes/${id}/`,
+        config
+      );
+      getBlogDetailsData("blogs", id);
       getBlogData("blogs");
-      getUserBlogs("userBlogs", userData?.user?.id);
     } catch (error) {
       dispatch(fetchFail());
       toastifyError(error.message);

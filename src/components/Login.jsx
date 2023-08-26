@@ -8,14 +8,12 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Formik, Form } from "formik";
-import { useNavigate } from "react-router-dom";
+
 import useAuth from "../hook/useAuth";
 import { cardBtn } from "../styles/globalStyles";
 
 const Login = () => {
-  const navigate = useNavigate();
-
-  const { loginpost } = useAuth();
+  const { login } = useAuth();
 
   return (
     <Container>
@@ -40,7 +38,7 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values, action) => {
-              loginpost(values);
+              login(values);
               action.resetForm();
               action.setSubmitting(false);
             }}
@@ -74,12 +72,7 @@ const Login = () => {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <Button
-                    onClick={() => navigate("/")}
-                    variant="contained"
-                    type="submit"
-                    sx={cardBtn}
-                  >
+                  <Button variant="contained" type="submit" sx={cardBtn}>
                     SIGN IN
                   </Button>
                   <Box>
