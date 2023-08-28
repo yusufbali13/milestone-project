@@ -16,8 +16,6 @@ const useBlogs = () => {
 
   const { token } = useSelector((state) => state.auth);
 
-  console.log(token);
-
   const config = {
     headers: { Authorization: `Token ${token}` },
   };

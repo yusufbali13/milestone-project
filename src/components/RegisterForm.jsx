@@ -20,7 +20,6 @@ const RegisterForm = ({
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            width: 400,
             margin: "auto",
           }}
         >

@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/Y-blok.jpg";
 import avatar from "../assets/avatar.jpg";
 import { useSelector } from "react-redux";
-import { linkStyle } from "../styles/globalStyles";
 import useAuth from "../hook/useAuth";
 
 function NavBars() {
@@ -23,8 +22,6 @@ function NavBars() {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const { currentUser, data } = useSelector((state) => state.auth);
-
-  console.log(currentUser);
 
   const { logout } = useAuth();
 
@@ -157,18 +154,29 @@ function NavBars() {
                   sx={{ display: "flex", flexDirection: "column" }}
                   onClick={handleCloseUserMenu}
                 >
-                  <Button onClick={() => navigate("/my-blog")} sx={linkStyle}>
+                  <Button
+                    sx={{ color: "black" }}
+                    onClick={() => navigate("/my-blog")}
+                  >
                     My Blogs
                   </Button>
-                  <Button onClick={() => navigate("/profile")} sx={linkStyle}>
+                  <Button
+                    sx={{ color: "black" }}
+                    onClick={() => navigate("/profile")}
+                  >
                     Profile
                   </Button>
-                  <Button sx={linkStyle} onClick={() => logout()}>
+                  <Button sx={{ color: "black" }} onClick={() => logout()}>
                     Logout
                   </Button>
                 </MenuItem>
               ) : (
-                <Button onClick={() => navigate("login")}>Login</Button>
+                <Button
+                  sx={{ color: "black" }}
+                  onClick={() => navigate("/login")}
+                >
+                  Login
+                </Button>
               )}
             </Menu>
           </Box>

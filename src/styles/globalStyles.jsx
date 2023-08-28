@@ -29,13 +29,6 @@ export const cardBtn = {
   },
 };
 
-export const linkStyle = {
-  "&:hover": { color: "red" },
-  textDecoration: "none",
-  color: "black",
-  p: 0.5,
-};
-
 export const icon = {
   cursor: "pointer",
   fontSize: 40,

@@ -11,7 +11,7 @@ import { useState } from "react";
 import Comments from "../components/Comments";
 const Detail = () => {
   const [open, setOpen] = useState(false);
-  console.log(open);
+
   const { detail } = useSelector((state) => state.blog);
 
   const tarih = new Date(detail.publish_date);

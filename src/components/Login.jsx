@@ -51,7 +51,6 @@ const Login = () => {
                     flexDirection: "column",
                     gap: 2,
                     margin: "auto",
-                    width: 400,
                   }}
                 >
                   <TextField
