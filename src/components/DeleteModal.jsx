@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
-import useBlogCall from "../../hooks/useBlogCall";
+import useBlogs from "../hook/useBlogs";
 const style = {
   position: "absolute",
   top: "50%",
@@ -17,7 +17,7 @@ const style = {
   p: 4,
 };
 const DeleteModal = ({ modal, detailId, handleClose }) => {
-  const { deleteBlogData } = useBlogCall();
+  const { delBlog } = useBlogs();
   const navigate = useNavigate();
   return (
     <div>
@@ -49,7 +49,7 @@ const DeleteModal = ({ modal, detailId, handleClose }) => {
               sx={{ backgroundColor: "red", fontWeight: "600" }}
               color="primary"
               onClick={() => {
-                deleteBlogData("blogs", detailId);
+                delBlog(detailId);
                 navigate("/");
               }}
             >

@@ -81,7 +81,7 @@ function NavBars() {
               }}
             >
               <MenuItem onClick={() => navigate("/")}>Dashboard</MenuItem>
-              <MenuItem onClick={() => navigate("/login")}>New Blog</MenuItem>
+              <MenuItem onClick={() => navigate("/newblog")}>New Blog</MenuItem>
               <MenuItem onClick={() => navigate("/about")}>About</MenuItem>
             </Menu>
           </Box>
@@ -109,7 +109,7 @@ function NavBars() {
             </Button>
             <Button
               onClick={() => {
-                navigate("/login");
+                navigate("/newblog");
                 handleCloseNavMenu;
               }}
               sx={{ my: 2, color: "white", display: "block" }}

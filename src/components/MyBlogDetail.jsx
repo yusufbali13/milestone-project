@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet";
 
 const MyBlogDetail = () => {
   const [open, setOpen] = useState(false);
-  const { details } = useSelector((state) => state.blog);
+  const { detail } = useSelector((state) => state.blog);
   //! Delete modal icin state
   const [modal, setModal] = React.useState(false);
   const handleOpen = () => setModal(true);
@@ -23,7 +23,7 @@ const MyBlogDetail = () => {
   const [upmodal, setUpModal] = React.useState(false);
   const handleOpenUp = () => setUpModal(true);
   const handleCloseUp = () => setUpModal(false);
-  const tarih = new Date(details.publish_date);
+  const tarih = new Date(detail.publish_date);
   return (
     <div>
       <Helmet>
@@ -33,7 +33,7 @@ const MyBlogDetail = () => {
         <CardMedia
           component="img"
           height="500"
-          image={details.image}
+          image={detail.image}
           alt="green iguana"
           sx={{
             objectFit: "contain",
@@ -55,7 +55,7 @@ const MyBlogDetail = () => {
           <AccountCircleIcon sx={{ fontSize: "50px" }} color="success" />
           <Box>
             <Typography variant="h6" component="h4">
-              {details.author}
+              {detail.author}
             </Typography>
             <Typography variant="h6" component="h4">
               {tarih.toDateString()}
@@ -64,25 +64,25 @@ const MyBlogDetail = () => {
         </Box>
         <Box>
           <Typography gutterBottom variant="h4" component="div">
-            {details.title}
+            {detail.title}
           </Typography>
           <Typography gutterBottom variant="p" component="div">
-            {details.content}
+            {detail.content}
           </Typography>
           <Box sx={{ mt: 2 }}>
             <BlogBadgeFav
-              likes_n={details.likes_n}
-              id={details.id}
-              likes={details.likes}
+              likes_n={detail.likes_n}
+              id={detail.id}
+              likes={detail.likes}
             />
             <BlogBadgeComment
               open={open}
               setOpen={setOpen}
-              comment_count={details.comment_count}
+              comment_count={detail.comment_count}
             />
-            <BlogBadgeVisit post_views={details.post_views} />
+            <BlogBadgeVisit post_views={detail.post_views} />
           </Box>
-          {open ? <Comments details={details} /> : ""}
+          {open ? <Comments detail={detail} /> : ""}
         </Box>
         <Box
           sx={{
@@ -112,7 +112,7 @@ const MyBlogDetail = () => {
           <DeleteModal
             modal={modal}
             handleClose={handleClose}
-            detailId={details.id}
+            detailId={detail.id}
           />
           <UpdateModal upmodal={upmodal} handleCloseUp={handleCloseUp} />
         </Box>

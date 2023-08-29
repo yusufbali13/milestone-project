@@ -7,17 +7,17 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import CommentForm from "./CommentForm";
-const Comments = ({ details }) => {
+const Comments = ({ detail }) => {
   return (
     <List sx={{ width: "100%", bgcolor: "background.paper", mt: 2 }}>
-      {details.comments.map((comment, index) => {
+      {detail.comments.map((comment, index) => {
         const { content, time_stamp, user, image, id } = comment;
         const time = new Date(time_stamp);
         return (
           <div key={index}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src={details.image} />
+                <Avatar alt="Remy Sharp" src={detail.image} />
               </ListItemAvatar>
               <ListItemText
                 primary={user}
@@ -40,7 +40,7 @@ const Comments = ({ details }) => {
           </div>
         );
       })}
-      <CommentForm detailsId={details.id} />
+      <CommentForm detailsId={detail.id} />
     </List>
   );
 };

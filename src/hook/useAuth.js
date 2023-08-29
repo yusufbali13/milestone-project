@@ -17,7 +17,7 @@ const useAuth = () => {
         `${import.meta.env.VITE_BASE_URL}/users/auth/login/`,
         formValue
       );
-      console.log(data);
+
       dispatch(loginSuccess(data));
       navigate("/");
       toastifySuccess("You have successfully logged in");

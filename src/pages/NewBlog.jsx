@@ -1,46 +1,168 @@
-import { Box } from "@mui/material";
-import { Formik } from "formik";
-
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Form, Formik } from "formik";
+import { useEffect } from "react";
+import useBlogs from "../hook/useBlogs";
+import { useSelector } from "react-redux";
+import { object, string } from "yup";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+const blogSchema = object({
+  title: string().required("Bu alan zorunludur"),
+  image: string().required("Bu alan zorunludur"),
+  content: string().required("Bu alan zorunludur"),
+  category: string().required("Bu alan zorunludur"),
+  status: string().required("Bu alan zorunludur"),
+});
+const status = [
+  {
+    id: "d",
+    name: "Draft",
+  },
+  {
+    id: "p",
+    name: "Published",
+  },
+];
 const NewBlog = () => {
+  const { categories, newBlog } = useSelector((state) => state.blog);
+  console.log(categories);
+  console.log(newBlog);
+  const { getCategories, postNewBlog } = useBlogs();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
-    <div>
-      <Formik>
-        initialValues=
-        {{
+    <Box
+      sx={{ m: "auto", mt: 10 }}
+      height={{ xs: "75vh", md: "70.4vh" }}
+      width={{ xs: 350, md: 500 }}
+    >
+      <Helmet>
+        <title>New Blogs</title>
+      </Helmet>
+      <Formik
+        initialValues={{
           title: "",
           image: "",
           content: "",
           category: "",
           status: "",
         }}
-        onSubmit=
-        {(values, action) => {
+        validationSchema={blogSchema}
+        onSubmit={(values, action) => {
+          postNewBlog(values);
+          navigate("/");
           action.resetForm();
           action.setSubmitting(false);
         }}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <TextField
-            label="Title*"
-            name="title"
-            id="title"
-            type="title"
-            variant="outlined"
-            onChange={handleChange}
-            value={values.title}
-          />
-          <TextField
-            label="Password *"
-            name="password"
-            id="password"
-            type="password"
-            variant="outlined"
-            onChange={handleChange}
-            value={values.password}
-          />
-        </Box>
+      >
+        {({ values, handleChange, errors, touched, handleBlur }) => (
+          <Form>
+            <Typography variant="h4" align="center" mb={5} color="orange">
+              NEW BLOG
+            </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <TextField
+                label="Title *"
+                name="title"
+                id="title"
+                type="text"
+                variant="outlined"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.title}
+                error={touched.title && Boolean(errors.title)}
+                helperText={errors.title}
+              />
+              <TextField
+                label="Image URL *"
+                name="image"
+                id="image"
+                type="url"
+                variant="outlined"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.image}
+                error={touched.image && Boolean(errors.image)}
+                helperText={errors.image}
+              />
+              <FormControl>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Category *
+                </InputLabel>
+                <Select
+                  label="Category *"
+                  id="category"
+                  name="category"
+                  variant="outlined"
+                  value={values.category}
+                  onChange={handleChange}
+                  error={touched.category && Boolean(errors.category)}
+                  helperText={errors.category}
+                >
+                  {categories.map(({ id, name }) => (
+                    <MenuItem value={id} key={id}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl>
+                <InputLabel id="demo-simple-select-helper-label">
+                  Status*
+                </InputLabel>
+                <Select
+                  label="Status"
+                  id="status"
+                  name="status"
+                  variant="outlined"
+                  value={values.status}
+                  onChange={handleChange}
+                  error={touched.status && Boolean(errors.status)}
+                  helperText={errors.status}
+                >
+                  {status.map(({ id, name }) => (
+                    <MenuItem value={id} key={id}>
+                      {name}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <TextField
+                label="Content *"
+                name="content"
+                id="content"
+                variant="outlined"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+                error={touched.content && Boolean(errors.content)}
+                helperText={errors.content}
+              />
+              <Button
+                variant="contained"
+                type="submit"
+                sx={{ backgroundColor: "orange" }}
+              >
+                NEW BLOG
+              </Button>
+            </Box>
+          </Form>
+        )}
       </Formik>
-    </div>
+    </Box>
   );
 };
-
 export default NewBlog;

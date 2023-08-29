@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
-import useBlogCall from "../../hooks/useBlogCall";
 import { Form, Formik } from "formik";
 import {
   FormControl,
@@ -15,6 +14,7 @@ import {
 } from "@mui/material";
 import { object, string } from "yup";
 import { useSelector } from "react-redux";
+import useBlogs from "../hook/useBlogs";
 const status = [
   {
     id: "d",
@@ -45,8 +45,9 @@ const blogSchema = object({
 });
 const UpdateModal = ({ upmodal, handleCloseUp }) => {
   const navigate = useNavigate();
-  const { categories, details } = useSelector((state) => state.blog);
-  const { putBlogData } = useBlogCall();
+  const { categories, detail } = useSelector((state) => state.blog);
+
+  const { updateBlog } = useBlogs();
   return (
     <div>
       <Modal
@@ -62,15 +63,15 @@ const UpdateModal = ({ upmodal, handleCloseUp }) => {
             <Box sx={{ width: 500, m: "auto", mt: 2 }}>
               <Formik
                 initialValues={{
-                  title: details?.title,
-                  image: details?.image,
-                  content: details?.content,
-                  category: details?.category,
-                  status: details?.status,
+                  title: detail?.title,
+                  image: detail?.image,
+                  content: detail?.content,
+                  category: detail?.category,
+                  status: detail?.status,
                 }}
                 validationSchema={blogSchema}
                 onSubmit={(values, action) => {
-                  putBlogData("blogs", details?.id, values);
+                  updateBlog(detail?.id, values);
                   navigate("/my-blog");
                   action.resetForm();
                   action.setSubmitting(false);

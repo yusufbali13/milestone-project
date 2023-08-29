@@ -25,7 +25,7 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/myBlogs" element={<MyBlogs />} />
+        <Route path="/my-blog" element={<MyBlogs />} />
       </Routes>
     </>
   );

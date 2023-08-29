@@ -5,14 +5,12 @@ import {
   getSuccess,
   fetchFail,
   getDetailSuccess,
+  getCategorySuccess,
 } from "../features/blogSlice";
 import { toastifySuccess, toastifyError } from "../helper/Toastify";
-import { useNavigate } from "react-router-dom";
 
 const useBlogs = () => {
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const { token } = useSelector((state) => state.auth);
 
@@ -47,28 +45,14 @@ const useBlogs = () => {
     }
   };
 
-  const getUserBlogs = async (dataName, id) => {
+  const getCategories = async () => {
     dispatch(fetchStart());
     try {
       const { data } = await axios(
-        `${import.meta.env.VITE_BASE_URL}/api/blogs/?author=${id}`,
+        `${import.meta.env.VITE_BASE_URL}/api/categories/`,
         config
       );
-      dispatch(getSuccess({ dataName, data }));
-    } catch (error) {
-      dispatch(fetchFail());
-      toastifyError(error.message);
-    }
-  };
-
-  const getCurrentData = async (dataName, blogName, id) => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axios(
-        `${import.meta.env.VITE_BASE_URL}/api/${blogName}/${id}/`,
-        config
-      );
-      dispatch(getSuccess({ dataName, data }));
+      dispatch(getCategorySuccess(data));
     } catch (error) {
       dispatch(fetchFail());
       toastifyError(error.message);
@@ -93,19 +77,26 @@ const useBlogs = () => {
   const delBlog = async (id) => {
     dispatch(fetchStart());
     try {
-      await axios.delete(`${baseURL}/api/blogs/${id}/`, config);
+      await axios.delete(
+        `${import.meta.env.VITE_BASE_URL}/api/blogs/${id}/`,
+        config
+      );
       toastifySuccess("The blog has been successfully deleted.");
     } catch (error) {
       dispatch(fetchFail());
       toastifyError(error.message);
     }
   };
+
   const updateBlog = async (id, formValues) => {
     dispatch(fetchStart());
     try {
-      await axios.put(`${baseURL}/api/blogs/${id}/`, formValues, config);
+      await axios.put(
+        `${import.meta.env.VITE_BASE_URL}/api/blogs/${id}/`,
+        formValues,
+        config
+      );
       getBlogData("blogs");
-      getCurrentData("activeBlog", "blogs", id);
       toastifySuccess("The blog has been successfully updated.");
     } catch (error) {
       dispatch(fetchFail());
@@ -144,16 +135,31 @@ const useBlogs = () => {
     }
   };
 
+  const postNewBlog = async (values) => {
+    dispatch(fetchStart());
+    try {
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/blogs/`,
+        values,
+        config
+      );
+      getBlogDetailsData("blogs");
+      toastifySuccess("Your comments has been successfully added.");
+    } catch (error) {
+      toastifyError(error.message);
+    }
+  };
+
   return {
     getBlogData,
     postBlogData,
     postFavs,
     postComments,
-    getCurrentData,
     delBlog,
     updateBlog,
-    getUserBlogs,
     getBlogDetailsData,
+    getCategories,
+    postNewBlog,
   };
 };
 export default useBlogs;
