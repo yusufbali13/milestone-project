@@ -95,8 +95,8 @@ const HomeCard = ({ blog }) => {
               getBlogDetailsData("blogs", id);
               {
                 author === data.username
-                  ? navigate("/blogdetail")
-                  : navigate(`/${id}`);
+                  ? navigate("/myblogdetail")
+                  : navigate(`/detail/${id}`);
               }
             }}
           >

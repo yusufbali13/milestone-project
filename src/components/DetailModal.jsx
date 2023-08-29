@@ -1,7 +1,7 @@
 import * as React from "react";
 import Modal from "@mui/material/Modal";
-import DeleteBlog from "./DeleteBlog";
-import UpdateBlog from "./UpdateBlog";
+import DeleteBlog from "./DeleteModal";
+import UpdateBlog from "./UpdateModal";
 
 export default function DetailModal({ open, setOpen, modalInfo }) {
   const handleClose = () => setOpen(false);

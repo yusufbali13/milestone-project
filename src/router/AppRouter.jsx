@@ -9,6 +9,7 @@ import PrivateRouter from "./PrivateRouter";
 import Detail from "../pages/Detail";
 import Profile from "../pages/Profile";
 import MyBlogs from "../pages/MyBlogs";
+import MyBlogDetail from "../components/MyBlogDetail";
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
         <Route element={<PrivateRouter />}>
           <Route path="/detail/:id" element={<Detail />} />
           <Route path="/newblog" element={<NewBlog />} />
+          <Route path="/myblogdetail" element={<MyBlogDetail />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

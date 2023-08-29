@@ -41,7 +41,6 @@ const useBlogs = () => {
         config
       );
       dispatch(getDetailSuccess(data));
-      navigate(`/detail/${id}`);
     } catch (error) {
       dispatch(fetchFail());
       toastifyError(error.message);
@@ -119,6 +118,7 @@ const useBlogs = () => {
     try {
       await axios.post(
         `${import.meta.env.VITE_BASE_URL}/api/likes/${id}/`,
+        {},
         config
       );
       getBlogDetailsData("blogs", id);
@@ -129,13 +129,15 @@ const useBlogs = () => {
     }
   };
 
-  const postComments = async (comment, id) => {
+  const postComments = async (id, comment) => {
     dispatch(fetchStart());
     try {
-      await axios.post(`${baseURL}/api/comments/${id}/`, comment, config);
-      getBlogData("blogs");
-      getComments("comments", id);
-      getCurrentData("activeBlog", "blogs", id);
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/comments/${id}/`,
+        comment,
+        config
+      );
+      getBlogDetailsData("blogs", id);
       toastifySuccess("Your comments has been successfully added.");
     } catch (error) {
       toastifyError(error.message);
@@ -146,7 +148,6 @@ const useBlogs = () => {
     getBlogData,
     postBlogData,
     postFavs,
-
     postComments,
     getCurrentData,
     delBlog,

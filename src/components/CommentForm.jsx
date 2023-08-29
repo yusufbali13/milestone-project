@@ -6,14 +6,15 @@ const commentSchema = object({
   comment: string(),
 });
 const CommentForm = ({ detailsId }) => {
-  const { commentPost } = useBlogs();
+  console.log(detailsId);
+  const { postComments } = useBlogs();
   return (
     <Box mt={4}>
       <Formik
         initialValues={{ content: "" }}
         validationSchema={commentSchema}
         onSubmit={(values, action) => {
-          commentPost("comments", detailsId, { ...values, post: detailsId });
+          postComments(detailsId, { ...values, post: detailsId });
           action.resetForm();
           action.setSubmitting(false);
         }}

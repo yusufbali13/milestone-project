@@ -4,9 +4,9 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CommentIcon from "@mui/icons-material/Comment";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import useBlogCall from "../hook/useBlogs";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useBlogs from "../hook/useBlogs";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -4,
@@ -15,11 +15,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     padding: "0 4px",
   },
 }));
+
 export default function BlogBadgeFav({ likes, id, likes_n }) {
-  const { postFavs } = useBlogCall();
+  const { postFavs } = useBlogs();
   const { currentUser, data } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const like = likes_n.some((item) => item.user_id === data.id);
+
   return (
     <IconButton
       onClick={() => {
