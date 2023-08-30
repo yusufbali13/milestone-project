@@ -11,6 +11,7 @@ import { useState } from "react";
 import DeleteModal from "./DeleteModal";
 import UpdateModal from "./UpdateModal";
 import { Helmet } from "react-helmet";
+import { delBtn, upBtn } from "../styles/globalStyles";
 
 const MyBlogDetail = () => {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,13 @@ const MyBlogDetail = () => {
       <Helmet>
         <title>My-Blog-Details</title>
       </Helmet>
-      <Box sx={{ width: "600px", m: "auto", p: 2 }}>
+      <Box
+        sx={{
+          width: "532px",
+          margin: "auto",
+          padding: 2,
+        }}
+      >
         <CardMedia
           component="img"
           height="500"
@@ -39,7 +46,7 @@ const MyBlogDetail = () => {
             objectFit: "contain",
             mt: 2,
             width: "500px",
-            m: "auto",
+            margin: "auto",
           }}
         />
         <Box
@@ -47,12 +54,11 @@ const MyBlogDetail = () => {
             display: "flex",
             alignItems: "center",
             textAlign: "start",
-            width: "95%",
             p: 0.5,
             gap: "15px",
           }}
         >
-          <AccountCircleIcon sx={{ fontSize: "50px" }} color="success" />
+          <AccountCircleIcon sx={{ fontSize: "50px" }} />
           <Box>
             <Typography variant="h6" component="h4">
               {detail.author}
@@ -87,25 +93,17 @@ const MyBlogDetail = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-evenly",
-            mt: 7,
+            margin: 12,
+            mt: 6,
           }}
         >
-          <Box>
-            <Button
-              sx={{ backgroundColor: "green", fontWeight: "600" }}
-              color="primary"
-              onClick={handleOpenUp}
-            >
+          <Box margin="auto">
+            <Button sx={upBtn} onClick={handleOpenUp}>
               UPDATE
             </Button>
           </Box>
-          <Box>
-            <Button
-              sx={{ backgroundColor: "red", fontWeight: "600" }}
-              color="primary"
-              onClick={handleOpen}
-            >
+          <Box margin="auto">
+            <Button sx={delBtn} onClick={handleOpen}>
               DELETE
             </Button>
           </Box>

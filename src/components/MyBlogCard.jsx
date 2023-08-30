@@ -5,7 +5,7 @@ import BlogBadgeFav, {
   BlogBadgeVisit,
 } from "../components/BlogBage";
 import React from "react";
-import { bagdeBox, btnReadMore, homeCard } from "../styles/globalStyles";
+import { bagdeBox, cardBtn, homeCard } from "../styles/globalStyles";
 import { useNavigate } from "react-router-dom";
 import useBlogs from "../hook/useBlogs";
 const MyBlogCard = ({ item }) => {
@@ -25,8 +25,9 @@ const MyBlogCard = ({ item }) => {
   const navigate = useNavigate();
   const { getBlogDetailsData } = useBlogs();
   const tarih = new Date(publish_date);
+
   return (
-    <div>
+    <Box display="flex" marginTop={13}>
       <Card sx={homeCard}>
         <CardMedia
           component="img"
@@ -53,7 +54,7 @@ const MyBlogCard = ({ item }) => {
         >
           {content}
         </Typography>
-        <Typography variant="p" component="div">
+        <Typography variant="p" component="div" marginRight={34}>
           {tarih.toDateString()}
         </Typography>
         <Box
@@ -73,7 +74,6 @@ const MyBlogCard = ({ item }) => {
               display: "flex",
               alignItems: "center",
               mt: 5,
-              fontWeight: "600",
             }}
           >
             <AccountCircleIcon />
@@ -92,14 +92,14 @@ const MyBlogCard = ({ item }) => {
                 getBlogDetailsData("blogs", id);
                 navigate("/myblogdetail");
               }}
-              sx={btnReadMore}
+              sx={cardBtn}
             >
               READ MORE
             </Button>
           </Box>
         </Box>
       </Card>
-    </div>
+    </Box>
   );
 };
 export default MyBlogCard;

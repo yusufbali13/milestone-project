@@ -7,7 +7,7 @@ const Profile = () => {
   const { data } = useSelector((state) => state.auth);
 
   return (
-    <Box height={{ xs: "79.2vh", md: "70.4vh", lg: "79.1vh" }}>
+    <Box height={{ xs: "79.2vh", md: "70.4vh", lg: "73.8vh" }}>
       <Helmet>
         <title>Blog-Profile</title>
       </Helmet>

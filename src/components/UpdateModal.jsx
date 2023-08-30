@@ -15,6 +15,7 @@ import {
 import { object, string } from "yup";
 import { useSelector } from "react-redux";
 import useBlogs from "../hook/useBlogs";
+import { cardBtn } from "../styles/globalStyles";
 const status = [
   {
     id: "d",
@@ -83,7 +84,7 @@ const UpdateModal = ({ upmodal, handleCloseUp }) => {
                       variant="h4"
                       align="center"
                       mb={5}
-                      color="orange"
+                      color="black"
                     >
                       UPDATE BLOG
                     </Typography>
@@ -167,11 +168,7 @@ const UpdateModal = ({ upmodal, handleCloseUp }) => {
                         error={touched.content && Boolean(errors.content)}
                         helperText={errors.content}
                       />
-                      <Button
-                        variant="contained"
-                        type="submit"
-                        sx={{ backgroundColor: "orange" }}
-                      >
+                      <Button variant="contained" type="submit" sx={cardBtn}>
                         UPDATE BLOG
                       </Button>
                     </Box>
