@@ -5,7 +5,7 @@ import BlogBadgeFav, {
   BlogBadgeVisit,
 } from "../components/BlogBage";
 import React from "react";
-import { bagdeBox, cardBtn, homeCard } from "../styles/globalStyles";
+import { bagdeBox, blogCard, cardBtn } from "../styles/globalStyles";
 import { useNavigate } from "react-router-dom";
 import useBlogs from "../hook/useBlogs";
 const MyBlogCard = ({ item }) => {
@@ -28,7 +28,7 @@ const MyBlogCard = ({ item }) => {
 
   return (
     <Box display="flex" marginTop={5}>
-      <Card sx={homeCard}>
+      <Card sx={blogCard}>
         <CardMedia
           component="img"
           height="150"
@@ -46,7 +46,6 @@ const MyBlogCard = ({ item }) => {
           sx={{
             display: "flex",
             alignItems: "center",
-            // width: { xs: "250px", md: "400px" },
             overflow: "hidden",
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
