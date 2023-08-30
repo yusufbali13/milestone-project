@@ -21,7 +21,7 @@ const MyBlog = () => {
   return (
     <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "78.8vh" }}>
       <Helmet>
-        <title>My Blogs</title>
+        <title>My-Blog</title>
       </Helmet>
       <Grid
         sx={{ display: "flex", justifyContent: "center" }}

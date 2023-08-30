@@ -35,8 +35,7 @@ const status = [
 ];
 const NewBlog = () => {
   const { categories, newBlog } = useSelector((state) => state.blog);
-  console.log(categories);
-  console.log(newBlog);
+
   const { getCategories, postNewBlog } = useBlogs();
   const navigate = useNavigate();
 
@@ -51,7 +50,7 @@ const NewBlog = () => {
       width={{ xs: 350, md: 500 }}
     >
       <Helmet>
-        <title>New Blogs</title>
+        <title>New-Blog</title>
       </Helmet>
       <Formik
         initialValues={{

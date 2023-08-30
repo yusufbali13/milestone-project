@@ -30,6 +30,7 @@ export default function BlogForm({ activeBlog, setOpen }) {
       activeBlog && setOpen(false);
     },
   });
+
   return (
     <Box
       component="form"

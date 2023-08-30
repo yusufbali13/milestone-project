@@ -8,7 +8,6 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import CommentForm from "./CommentForm";
 const Comments = ({ detail }) => {
-  console.log(detail.comments);
   return (
     <List sx={{ width: "100%", bgcolor: "background.paper", mt: 2 }}>
       {detail.comments.map((comment, index) => {

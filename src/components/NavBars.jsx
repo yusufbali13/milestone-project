@@ -21,7 +21,7 @@ function NavBars() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const { currentUser, data } = useSelector((state) => state.auth);
+  const { currentUser } = useSelector((state) => state.auth);
 
   const { logout } = useAuth();
 

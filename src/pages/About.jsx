@@ -6,10 +6,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { icon, icons, shadowCard } from "../styles/globalStyles";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const About = () => {
   return (
     <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "68.6vh" }}>
+      <Helmet>
+        <title>About</title>
+      </Helmet>
       <Card sx={shadowCard}>
         <CardMedia
           sx={{ objectFit: "contain", height: "170px" }}

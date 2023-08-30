@@ -13,7 +13,6 @@ const Detail = () => {
   const [open, setOpen] = useState(false);
 
   const { detail } = useSelector((state) => state.blog);
-  console.log(detail);
 
   const tarih = new Date(detail.publish_date);
 
