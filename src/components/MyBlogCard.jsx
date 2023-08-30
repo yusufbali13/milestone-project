@@ -27,7 +27,7 @@ const MyBlogCard = ({ item }) => {
   const tarih = new Date(publish_date);
 
   return (
-    <Box display="flex" marginTop={13}>
+    <Box display="flex" marginTop={5}>
       <Card sx={homeCard}>
         <CardMedia
           component="img"
@@ -46,7 +46,7 @@ const MyBlogCard = ({ item }) => {
           sx={{
             display: "flex",
             alignItems: "center",
-            width: { xs: "250px", md: "400px" },
+            // width: { xs: "250px", md: "400px" },
             overflow: "hidden",
             whiteSpace: "nowrap",
             textOverflow: "ellipsis",
@@ -54,7 +54,7 @@ const MyBlogCard = ({ item }) => {
         >
           {content}
         </Typography>
-        <Typography variant="p" component="div" marginRight={34}>
+        <Typography variant="p" component="div">
           {tarih.toDateString()}
         </Typography>
         <Box

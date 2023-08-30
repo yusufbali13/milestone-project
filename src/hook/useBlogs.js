@@ -143,7 +143,7 @@ const useBlogs = () => {
         config
       );
       getBlogDetailsData("blogs");
-      toastifySuccess("Your comments has been successfully added.");
+      toastifySuccess("Your Blog has been successfully added.");
     } catch (error) {
       toastifyError(error.message);
     }
