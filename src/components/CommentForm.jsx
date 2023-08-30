@@ -7,7 +7,6 @@ const commentSchema = object({
   comment: string(),
 });
 const CommentForm = ({ detailsId }) => {
-  console.log(detailsId);
   const { postComments } = useBlogs();
   return (
     <Box mt={4}>

@@ -40,22 +40,22 @@ const About = () => {
           </Typography>
         </CardContent>
         <Typography>
-          <Link to="https://www.linkedin.com/school/clarusway/" target="_blank">
+          <Link to="https://www.linkedin.com/in/yusuf-bali/" target="_blank">
             <LinkedInIcon sx={icon} />
           </Link>
 
-          <Link
-            to="https://twitter.com/clarusway?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-            target="_blank"
-          >
+          <Link to="https://twitter.com/" target="_blank">
             <TwitterIcon fontSize="large" sx={icon} />
           </Link>
 
-          <Link to="https://www.instagram.com/clarusway/?hl=en" target="_blank">
+          <Link to="https://www.instagram.com/accounts/login/" target="_blank">
             <InstagramIcon sx={icons} />
           </Link>
 
-          <Link to="https://www.youtube.com/c/clarusway" target="_blank">
+          <Link
+            to="https://www.youtube.com/channel/UC1ZntxkABtvtZUoWRjEL8rA"
+            target="_blank"
+          >
             <YouTubeIcon sx={icons} />
           </Link>
         </Typography>

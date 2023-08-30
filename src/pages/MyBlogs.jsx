@@ -10,7 +10,7 @@ const MyBlog = () => {
   const { getBlogData } = useBlogs();
   const { blogs } = useSelector((state) => state.blog);
   const { data } = useSelector((state) => state.auth);
-  console.log(blogs);
+
   const myBlog = blogs.filter((blog) => blog.author === data.username);
   const navigate = useNavigate();
 

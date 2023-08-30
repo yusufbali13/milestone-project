@@ -21,7 +21,7 @@ const MyBlogCard = ({ item }) => {
     post_views,
     likes_n,
   } = item;
-  console.log(item);
+
   const navigate = useNavigate();
   const { getBlogDetailsData } = useBlogs();
   const tarih = new Date(publish_date);
