@@ -3,9 +3,9 @@ import useBlogs from "../hook/useBlogs";
 import { Helmet } from "react-helmet";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
-
 import { useNavigate } from "react-router-dom";
 import MyBlogCard from "../components/MyBlogCard";
+import { cardBtn } from "../styles/globalStyles";
 const MyBlog = () => {
   const { getBlogData } = useBlogs();
   const { blogs } = useSelector((state) => state.blog);
@@ -19,7 +19,7 @@ const MyBlog = () => {
   }, []);
 
   return (
-    <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "79.1vh" }}>
+    <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "78.8vh" }}>
       <Helmet>
         <title>My Blogs</title>
       </Helmet>
@@ -40,13 +40,10 @@ const MyBlog = () => {
           })
         ) : (
           <Box mt={10}>
-            <Typography align="center" color="error">
-              No Blogs Data..
+            <Typography align="center" color="error" marginBottom={5}>
+              No Blogs Data...
             </Typography>
-            <Button
-              onClick={() => navigate("/newblog")}
-              sx={{ backgroundColor: "orange", mt: 5 }}
-            >
+            <Button onClick={() => navigate("/newblog")} sx={cardBtn}>
               ADD NEW BLOG
             </Button>
           </Box>

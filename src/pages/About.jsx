@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "79.1vh" }}>
+    <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "68.6vh" }}>
       <Card sx={shadowCard}>
         <CardMedia
-          sx={{ objectFit: "contain", height: "180px" }}
+          sx={{ objectFit: "contain", height: "170px" }}
           image={image}
           title="image"
           component="img"

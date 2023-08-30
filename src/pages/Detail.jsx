@@ -13,10 +13,12 @@ const Detail = () => {
   const [open, setOpen] = useState(false);
 
   const { detail } = useSelector((state) => state.blog);
+  console.log(detail);
 
   const tarih = new Date(detail.publish_date);
+
   return (
-    <div>
+    <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "88.6vh" }}>
       <Box sx={{ width: "600px", m: "auto", p: 2 }}>
         <CardMedia
           component="img"
@@ -65,10 +67,10 @@ const Detail = () => {
             />
             <BlogBadgeVisit post_views={detail.post_views} />
           </Box>
-          {open ? <Comments details={detail} /> : ""}
+          {open ? <Comments detail={detail} /> : ""}
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 export default Detail;

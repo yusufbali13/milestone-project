@@ -1,7 +1,7 @@
 import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
-import { cardBtn, homeCard } from "../styles/globalStyles";
+import { bagdeBox, cardBtn, homeCard } from "../styles/globalStyles";
 import useBlogs from "../hook/useBlogs";
 import { useSelector } from "react-redux";
 import BlogBadgeFav, { BlogBadgeComment, BlogBadgeVisit } from "./BlogBage";
@@ -82,10 +82,13 @@ const HomeCard = ({ blog }) => {
           </Typography>
         </Box>
 
-        <Box display="flex" marginRight={4}>
-          <BlogBadgeFav likes_n={likes_n} id={id} likes={likes} />
-          <BlogBadgeComment comment_count={comment_count} />
-          <BlogBadgeVisit post_views={post_views} />
+        <Box sx={bagdeBox}>
+          <Box>
+            <BlogBadgeFav likes_n={likes_n} id={id} likes={likes} />
+            <BlogBadgeComment comment_count={comment_count} />
+            <BlogBadgeVisit post_views={post_views} />
+          </Box>
+
           <Box sx={cardBtn}>
             <Button
               sx={cardBtn}

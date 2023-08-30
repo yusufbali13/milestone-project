@@ -4,7 +4,7 @@ export const shadowCard = {
   flexDirection: "column",
   boxShadow: "-moz-initial",
   margin: "auto",
-  marginTop: "150px",
+  marginTop: "130px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -25,6 +25,7 @@ export const homeCard = {
 export const cardBtn = {
   color: "white",
   backgroundColor: "black",
+  borderRadius: "7px",
   "&:hover": {
     backgroundColor: "black",
   },
@@ -57,7 +58,7 @@ export const bagdeBox = {
   mt: "10px",
 };
 export const btnReadMore = {
-  backgroundColor: "#173459",
+  backgroundColor: "black",
   color: "white",
   "&:hover": {
     color: "black",

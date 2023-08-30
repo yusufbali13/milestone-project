@@ -14,7 +14,7 @@ const Dasboard = () => {
   }, []);
 
   return (
-    <Box minHeight={{ md: "70.4vh", lg: "82.1vh" }}>
+    <Box minHeight={{ md: "70.4vh", lg: "82.9vh" }}>
       <Grid container justifyContent="center" spacing={5}>
         {blogs?.map((blog) => (
           <Grid item key={blog.id}>

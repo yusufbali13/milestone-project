@@ -2,6 +2,7 @@ import { Box, Button, TextField } from "@mui/material";
 import { Form, Formik } from "formik";
 import { object, string } from "yup";
 import useBlogs from "../hook/useBlogs";
+import { cardBtn } from "../styles/globalStyles";
 const commentSchema = object({
   comment: string(),
 });
@@ -34,11 +35,7 @@ const CommentForm = ({ detailsId }) => {
                 error={touched.content && Boolean(errors.content)}
                 helperText={errors.content}
               />
-              <Button
-                variant="contained"
-                type="submit"
-                sx={{ backgroundColor: "orange" }}
-              >
+              <Button variant="contained" type="submit" sx={cardBtn}>
                 ADD COMMENT
               </Button>
             </Box>

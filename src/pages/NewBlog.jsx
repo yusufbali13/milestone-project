@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { object, string } from "yup";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { cardBtn } from "../styles/globalStyles";
 const blogSchema = object({
   title: string().required("Bu alan zorunludur"),
   image: string().required("Bu alan zorunludur"),
@@ -46,7 +47,7 @@ const NewBlog = () => {
   return (
     <Box
       sx={{ m: "auto", mt: 10 }}
-      height={{ xs: "75vh", md: "70.4vh" }}
+      height={{ xs: "75vh", md: "73.8vh" }}
       width={{ xs: 350, md: 500 }}
     >
       <Helmet>
@@ -70,7 +71,7 @@ const NewBlog = () => {
       >
         {({ values, handleChange, errors, touched, handleBlur }) => (
           <Form>
-            <Typography variant="h4" align="center" mb={5} color="orange">
+            <Typography variant="h4" align="center" mb={5} color="black">
               NEW BLOG
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
@@ -151,11 +152,7 @@ const NewBlog = () => {
                 error={touched.content && Boolean(errors.content)}
                 helpertext={errors.content}
               />
-              <Button
-                variant="contained"
-                type="submit"
-                sx={{ backgroundColor: "orange" }}
-              >
+              <Button variant="contained" type="submit" sx={cardBtn}>
                 NEW BLOG
               </Button>
             </Box>
