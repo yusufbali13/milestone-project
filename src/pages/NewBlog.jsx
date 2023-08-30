@@ -84,7 +84,7 @@ const NewBlog = () => {
                 onBlur={handleBlur}
                 value={values.title}
                 error={touched.title && Boolean(errors.title)}
-                helperText={errors.title}
+                helpertext={errors.title}
               />
               <TextField
                 label="Image URL *"
@@ -96,7 +96,7 @@ const NewBlog = () => {
                 onBlur={handleBlur}
                 value={values.image}
                 error={touched.image && Boolean(errors.image)}
-                helperText={errors.image}
+                helpertext={errors.image}
               />
               <FormControl>
                 <InputLabel id="demo-simple-select-helper-label">
@@ -110,7 +110,7 @@ const NewBlog = () => {
                   value={values.category}
                   onChange={handleChange}
                   error={touched.category && Boolean(errors.category)}
-                  helperText={errors.category}
+                  helpertext={errors.category}
                 >
                   {categories.map(({ id, name }) => (
                     <MenuItem value={id} key={id}>
@@ -131,7 +131,7 @@ const NewBlog = () => {
                   value={values.status}
                   onChange={handleChange}
                   error={touched.status && Boolean(errors.status)}
-                  helperText={errors.status}
+                  helpertext={errors.status}
                 >
                   {status.map(({ id, name }) => (
                     <MenuItem value={id} key={id}>
@@ -149,7 +149,7 @@ const NewBlog = () => {
                 onBlur={handleBlur}
                 value={values.content}
                 error={touched.content && Boolean(errors.content)}
-                helperText={errors.content}
+                helpertext={errors.content}
               />
               <Button
                 variant="contained"

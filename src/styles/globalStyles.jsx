@@ -4,6 +4,7 @@ export const shadowCard = {
   flexDirection: "column",
   boxShadow: "-moz-initial",
   margin: "auto",
+  marginTop: "150px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

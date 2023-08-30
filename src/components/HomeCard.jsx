@@ -82,26 +82,25 @@ const HomeCard = ({ blog }) => {
           </Typography>
         </Box>
 
-        <Box>
+        <Box display="flex" marginRight={4}>
           <BlogBadgeFav likes_n={likes_n} id={id} likes={likes} />
           <BlogBadgeComment comment_count={comment_count} />
           <BlogBadgeVisit post_views={post_views} />
-        </Box>
-
-        <Box sx={cardBtn}>
-          <Button
-            sx={cardBtn}
-            onClick={() => {
-              getBlogDetailsData("blogs", id);
-              {
-                author === data.username
-                  ? navigate("/myblogdetail")
-                  : navigate(`/detail/${id}`);
-              }
-            }}
-          >
-            READ MORE
-          </Button>
+          <Box sx={cardBtn}>
+            <Button
+              sx={cardBtn}
+              onClick={() => {
+                getBlogDetailsData("blogs", id);
+                {
+                  author === data.username
+                    ? navigate("/myblogdetail")
+                    : navigate(`/detail/${id}`);
+                }
+              }}
+            >
+              READ MORE
+            </Button>
+          </Box>
         </Box>
       </Card>
     </div>

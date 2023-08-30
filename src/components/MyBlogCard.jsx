@@ -30,8 +30,6 @@ const MyBlogCard = ({ item }) => {
       {}
       <Card
         sx={{
-          //width: "400px",
-          //height: "300px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",

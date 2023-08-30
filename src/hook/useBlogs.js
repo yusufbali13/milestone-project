@@ -41,7 +41,6 @@ const useBlogs = () => {
       dispatch(getDetailSuccess(data));
     } catch (error) {
       dispatch(fetchFail());
-      toastifyError(error.message);
     }
   };
 

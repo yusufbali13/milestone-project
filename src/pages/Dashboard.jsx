@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import useBlog from "../hook/useBlogs";
 import { useSelector } from "react-redux";
 import HomeCard from "../components/HomeCard";
+import { Box } from "@mui/material";
 
 const Dasboard = () => {
   const { getBlogData } = useBlog();
@@ -13,7 +14,7 @@ const Dasboard = () => {
   }, []);
 
   return (
-    <div>
+    <Box minHeight={{ md: "70.4vh", lg: "82.1vh" }}>
       <Grid container justifyContent="center" spacing={5}>
         {blogs?.map((blog) => (
           <Grid item key={blog.id}>
@@ -21,7 +22,7 @@ const Dasboard = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </Box>
   );
 };
 

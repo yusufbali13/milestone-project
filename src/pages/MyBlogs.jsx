@@ -13,9 +13,11 @@ const MyBlog = () => {
   console.log(blogs);
   const myBlog = blogs.filter((blog) => blog.author === data.username);
   const navigate = useNavigate();
+
   useEffect(() => {
     getBlogData("blogs");
   }, []);
+
   return (
     <Box minHeight={{ xs: "79.2vh", md: "70.4vh", lg: "79.1vh" }}>
       <Helmet>
@@ -39,7 +41,7 @@ const MyBlog = () => {
         ) : (
           <Box mt={10}>
             <Typography align="center" color="error">
-              No Blogs Data..{" "}
+              No Blogs Data..
             </Typography>
             <Button
               onClick={() => navigate("/newblog")}
