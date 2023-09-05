@@ -58,4 +58,4 @@
 
 ![inter](https://github.com/yusufbali13/milestone-project/assets/119419061/94835b82-76ce-4f10-b9ba-5802b27ac4b3)
 
-In this project I'm using React, React Router, Firebase, and The Movie Database API. I'm also using React Hooks, React Context API & Firebase Authentication to build this project.
+A milestone app built with React, React Router, Redux Toolkit, and MUİ Based Components.
